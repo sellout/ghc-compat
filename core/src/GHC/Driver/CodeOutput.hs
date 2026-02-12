@@ -8,4 +8,5 @@ where
 import "ghc" GHC.Driver.CodeOutput as Upstream
 #else
 import "ghc" CodeOutput as Upstream
+import "ghc" ProfInit as Upstream
 #endif

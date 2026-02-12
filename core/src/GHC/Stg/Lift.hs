@@ -8,4 +8,5 @@ where
 import "ghc" GHC.Stg.Lift as Upstream
 #else
 import "ghc" StgLiftLams as Upstream
+import "ghc" StgLiftLams.Transformation as Upstream
 #endif

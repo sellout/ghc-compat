@@ -118,7 +118,6 @@ library
       -- FIXME: These don’t belong here, but they need to be in a conditional,
       --        because `-Weverything` is in a conditional.
       -Wno-missing-import-lists
-      -Wno-missing-safe-haskell-mode
       -Wno-safe
     if impl(ghc < 8.8.1)
       ghc-options:
@@ -135,6 +134,9 @@ library
     ghc-options:
       -- remove if oldest supported version is GHC 8.2.1
       -Wno-missing-deriving-strategies
+  if impl(ghc >= 8.10.1)
+    ghc-options:
+      -Wno-missing-safe-haskell-mode
   default-extensions:
     -- BlockArguments - uncomment if the oldest supported version is GHC 8.6.1+
     CPP
@@ -184,10 +186,10 @@ library
     GHC.Cmm.CommonBlockElim
     GHC.Cmm.ContFlowOpt
     GHC.Cmm.Dataflow
-    GHC.Cmm.Dataflow.Block
+    -- GHC.Cmm.Dataflow.Block – not in GHC 8.2
     -- GHC.Cmm.Dataflow.Collections – renamed in GHC 9.10
-    GHC.Cmm.Dataflow.Graph
-    GHC.Cmm.Dataflow.Label
+    -- GHC.Cmm.Dataflow.Graph – not in GHC 8.2
+    -- GHC.Cmm.Dataflow.Label – not in GHC 8.2
     GHC.Cmm.DebugBlock
     GHC.Cmm.Expr
     GHC.Cmm.Graph
@@ -213,9 +215,9 @@ library
     GHC.Cmm.Type
     GHC.Cmm.Utils
     GHC.CmmToAsm
-    GHC.CmmToAsm.BlockLayout
-    GHC.CmmToAsm.CFG
-    GHC.CmmToAsm.CFG.Dominators
+    -- GHC.CmmToAsm.BlockLayout – not in GHC 8.4, 8.6
+    -- GHC.CmmToAsm.CFG – not in GHC 8.4, 8.6
+    -- GHC.CmmToAsm.CFG.Dominators – not in GHC 8.8
     GHC.CmmToAsm.CPrim
     GHC.CmmToAsm.Dwarf
     GHC.CmmToAsm.Dwarf.Constants
@@ -322,14 +324,14 @@ library
     GHC.Core.PatSyn
     GHC.Core.Ppr
     -- GHC.Core.Ppr.TyThing – renamed in GHC 9.2 or 9.4
-    GHC.Core.Predicate
+    -- GHC.Core.Predicate – not in GHC 8.8
     GHC.Core.Rules
     GHC.Core.Seq
     GHC.Core.SimpleOpt
     GHC.Core.Stats
     GHC.Core.Subst
     GHC.Core.Tidy
-    GHC.Core.TyCo.FVs
+    -- GHC.Core.TyCo.FVs – not in GHC 8.4, 8.6, 8.8
     GHC.Core.TyCo.Ppr
     GHC.Core.TyCo.Rep
     GHC.Core.TyCo.Subst
@@ -382,9 +384,9 @@ library
     GHC.Driver.Plugins
     GHC.Driver.Session
     -- GHC.Driver.Types – renamed in GHC 9.2 or 9.4
-    GHC.Hs
-    GHC.Hs.Binds
-    GHC.Hs.Decls
+    -- GHC.Hs – not in GHC 8.10
+    -- GHC.Hs.Binds – not in GHC 8.10
+    -- GHC.Hs.Decls – not in GHC 8.10
     GHC.Hs.Doc
     GHC.Hs.Dump
     GHC.Hs.Expr
@@ -460,7 +462,7 @@ library
     GHC.Platform.X86_64
     GHC.Plugins
     GHC.Rename.Bind
-    GHC.Rename.Doc
+    -- GHC.Rename.Doc – missing in GHC 9.2
     GHC.Rename.Env
     GHC.Rename.Expr
     GHC.Rename.Fixity
@@ -542,7 +544,7 @@ library
     GHC.Tc.Gen.HsType
     GHC.Tc.Gen.Match
     GHC.Tc.Gen.Pat
-    GHC.Tc.Gen.Rule
+    -- GHC.Tc.Gen.Rule – renamed in GHC 9.14
     GHC.Tc.Gen.Sig
     GHC.Tc.Gen.Splice
     GHC.Tc.Instance.Class
@@ -564,7 +566,7 @@ library
     GHC.Tc.TyCl.Utils
     GHC.Tc.Types
     GHC.Tc.Types.Constraint
-    GHC.Tc.Types.EvTerm
+    -- GHC.Tc.Types.EvTerm – renamed in GHC 9.14
     GHC.Tc.Types.Evidence
     GHC.Tc.Types.Origin
     GHC.Tc.Utils.Backpack
@@ -604,29 +606,29 @@ library
     GHC.Types.Unique.DFM
     GHC.Types.Unique.DSet
     GHC.Types.Unique.FM
-    GHC.Types.Unique.Map
+    -- GHC.Types.Unique.Map – didn’t exist before 9.2 (or 9.4?)
     GHC.Types.Unique.Set
     GHC.Types.Unique.Supply
     GHC.Types.Var
     GHC.Types.Var.Env
     GHC.Types.Var.Set
-    GHC.Utils.Asm
+    -- GHC.Utils.Asm – not in GHC 7.10, 8.0
     GHC.Utils.Binary
     GHC.Utils.BufHandle
-    GHC.Utils.CliOption
+    -- GHC.Utils.CliOption – not in GHC 8.0
     -- GHC.Utils.Encoding – renamed in GHC 9.2 or 9.4
     GHC.Utils.Error
     GHC.Utils.Exception
     -- GHC.Utils.FingerPrint – renamed in GHC 9.2 or 9.4
-    GHC.Utils.FV
+    -- GHC.Utils.FV – not in GHC 7.10
     GHC.Utils.IO.Unsafe
-    GHC.Utils.Json
+    -- GHC.Utils.Json – not in GHC 7.10, 8.0
     GHC.Utils.Lexeme
     GHC.Utils.Misc
     -- GHC.Utils.Monad.State – renamed in GHC 9.2 or 9.4
     -- GHC.Utils.Monad.Utils – renamed in GHC 9.2 or 9.4
     GHC.Utils.Outputable
     GHC.Utils.Panic
-    GHC.Utils.Panic.Plain
+    -- GHC.Utils.Panic.Plain – didn’t exist before GHC 8.2
     GHC.Utils.Ppr
-    GHC.Utils.Ppr.Colour
+    -- GHC.Utils.Ppr.Colour – didn’t exist before GHC 8.0

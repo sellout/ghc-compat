@@ -7,5 +7,5 @@ where
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Cmm.Lexer as Upstream
 #else
-import "ghc" CmmLe as Upstream
+import "ghc" CmmLex as Upstream
 #endif

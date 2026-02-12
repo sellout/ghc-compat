@@ -1,0 +1,11 @@
+{
+  project:
+    {
+      creation-date: "2026-02-12",
+      description: "Easily use the `ghc` library across multiple GHC releases..",
+      name: "ghc-compat",
+      repo: "sellout/ghc-compat",
+      summary: "Compatibility layer for the `ghc` library",
+    },
+  type: { name: "haskell" },
+}

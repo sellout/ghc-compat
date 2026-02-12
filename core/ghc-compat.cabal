@@ -480,6 +480,7 @@ library
     -- GHC.Runtime.Linker – renamed in GHC 9.2 or 9.4
     -- GHC.Runtime.Linker.Types – renamed in GHC 9.2 or 9.4
     GHC.Runtime.Loader
+    GHC.Settings
     GHC.Settings.Config
     GHC.Settings.Constants
     GHC.Settings.IO

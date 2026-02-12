@@ -67,6 +67,8 @@
     inherit (self.lib) defaultGhcVersion;
     ghcVersions = self.lib.nonNixTestedGhcVersions;
     cabalPackages = {"${config.project.name}" = "core";};
+    ## Our only dependency is GHC, so we don’t gain anything by exploring bounds.
+    exclude = [{bounds = "--prefer-oldest";}];
     ## The latest Stackage LTS that we also build on GitHub for.
     latestGhcVersion = "9.10.1";
   };

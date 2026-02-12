@@ -1,0 +1,11 @@
+-- | Compatibility wrapper around ghc’s "GHC.Platform.ARM".
+module GHC.Platform.ARM
+  ( module Upstream,
+  )
+where
+
+#if MIN_VERSION_ghc(9, 0, 0)
+import "ghc" GHC.Platform.ARM as Upstream
+#else
+import "ghc" CodeGen.Platform.ARM as Upstream
+#endif

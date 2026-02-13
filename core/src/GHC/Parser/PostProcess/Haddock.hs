@@ -7,5 +7,5 @@ where
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Parser.PostProcess.Haddock as Upstream
 #else
-import "ghc" HaddockUt as Upstream
+import "ghc" HaddockUtils as Upstream
 #endif

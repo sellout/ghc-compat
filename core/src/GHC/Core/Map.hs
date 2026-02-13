@@ -8,6 +8,10 @@ where
 import "this" Unresolved as Upstream
 #elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Core.Map as Upstream
+#elif MIN_VERSION_ghc(8, 6, 0)
+import "ghc" CoreMap as Upstream
+#elif MIN_VERSION_ghc(8, 2, 0)
+import "this" Unresolved as Upstream
 #else
 import "ghc" CoreMap as Upstream
 #endif

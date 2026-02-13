@@ -4,7 +4,7 @@ module GHC.Tc.Solver.Flatten
   )
 where
 
-#if MIN_VERSION_ghc(9, 4, 0)
+#if MIN_VERSION_ghc(9, 2, 0)
 import "this" Unresolved as Upstream
 #elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Tc.Solver.Flatten as Upstream

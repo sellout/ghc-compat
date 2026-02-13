@@ -6,6 +6,12 @@ where
 
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Tc.Types.Origin as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 10, 0)
 import "ghc" TcOrigin as Upstream
+#elif MIN_VERSION_ghc(8, 4, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(8, 2, 0)
+import "ghc" TcOrigin as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

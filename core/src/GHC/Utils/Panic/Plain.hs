@@ -6,6 +6,10 @@ where
 
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Utils.Panic.Plain as Upstream
+#elif MIN_VERSION_ghc(8, 8, 0)
+import "ghc" PlainPanic as Upstream
+#elif MIN_VERSION_ghc(8, 4, 0)
+import "this" Unresolved as Upstream
 #elif MIN_VERSION_ghc(8, 2, 0)
 import "ghc" PlainPanic as Upstream
 #else

@@ -4,7 +4,9 @@ module GHC.Core.Ppr.TyThing
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 4, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Core.Ppr.TyThing as Upstream
 #else
 import "ghc" PprTyThing as Upstream

@@ -4,7 +4,9 @@ module GHC.Platform.ARM64
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 4, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Platform.ARM64 as Upstream
 #else
 import "ghc" CodeGen.Platform.ARM64 as Upstream

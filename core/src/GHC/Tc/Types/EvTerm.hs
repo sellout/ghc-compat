@@ -4,7 +4,9 @@ module GHC.Tc.Types.EvTerm
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 14, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Tc.Types.EvTerm as Upstream
 #else
 import "ghc" TcEvTerm as Upstream

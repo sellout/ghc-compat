@@ -4,7 +4,9 @@ module GHC.Tc.Utils.Zonk
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 8, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Tc.Utils.Zonk as Upstream
 #else
 import "ghc" TcHsSyn as Upstream

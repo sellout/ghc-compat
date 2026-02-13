@@ -6,6 +6,8 @@ where
 
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Utils.Json as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 2, 0)
 import "ghc" Json as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

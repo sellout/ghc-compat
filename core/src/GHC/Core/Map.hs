@@ -4,7 +4,9 @@ module GHC.Core.Map
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 4, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Core.Map as Upstream
 #else
 import "ghc" CoreMap as Upstream

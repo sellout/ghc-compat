@@ -4,7 +4,9 @@ module GHC.SysTools.Info
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 10, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.SysTools.Info as Upstream
 #else
 import "ghc" SysTools.Info as Upstream

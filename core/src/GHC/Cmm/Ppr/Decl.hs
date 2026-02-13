@@ -4,7 +4,9 @@ module GHC.Cmm.Ppr.Decl
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(9, 6, 0)
+import "this" Unresolved as Upstream
+#elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Cmm.Ppr.Decl as Upstream
 #else
 import "ghc" PprCmmDecl as Upstream

@@ -4,7 +4,7 @@ module GHC.Platform.Regs
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Platform.Regs as Upstream
 #else
 import "ghc" CodeGen.Platform as Upstream

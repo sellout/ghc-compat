@@ -4,7 +4,7 @@ module GHC.Hs.Pat
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Hs.Pat as Upstream
 #else
 import "ghc" HsPat as Upstream

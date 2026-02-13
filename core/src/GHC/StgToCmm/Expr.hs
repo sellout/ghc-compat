@@ -4,7 +4,7 @@ module GHC.StgToCmm.Expr
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.StgToCmm.Expr as Upstream
 #else
 import "ghc" StgCmmExpr as Upstream

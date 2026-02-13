@@ -4,7 +4,7 @@ module GHC.ThToHs
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.ThToHs as Upstream
 #else
 import "ghc" Convert as Upstream

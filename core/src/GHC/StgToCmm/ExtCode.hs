@@ -4,7 +4,7 @@ module GHC.StgToCmm.ExtCode
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.StgToCmm.ExtCode as Upstream
 #else
 import "ghc" StgCmmExtCode as Upstream

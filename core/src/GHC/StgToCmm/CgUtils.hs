@@ -4,7 +4,7 @@ module GHC.StgToCmm.CgUtils
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.StgToCmm.CgUtils as Upstream
 #else
 import "ghc" CgUtils as Upstream

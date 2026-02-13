@@ -4,7 +4,7 @@ module GHC.Platform.X86
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Platform.X86 as Upstream
 #else
 import "ghc" CodeGen.Platform.X86 as Upstream

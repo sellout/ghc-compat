@@ -4,7 +4,7 @@ module GHC.Hs
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Hs as Upstream
 #else
 import "ghc" HsSyn as Upstream

@@ -6,6 +6,8 @@ where
 
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.HsToCore.Usage as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 2, 0)
 import "ghc" DsUsage as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

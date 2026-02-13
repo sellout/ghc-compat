@@ -4,7 +4,7 @@ module GHC.StgToCmm.Ticky
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.StgToCmm.Ticky as Upstream
 #else
 import "ghc" StgCmmTicky as Upstream

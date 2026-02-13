@@ -286,13 +286,13 @@ library
     GHC.Core.Opt.CallArity
     GHC.Core.Opt.ConstantFold
     GHC.Core.Opt.DmdAnal
-    GHC.Core.Opt.Driver
     GHC.Core.Opt.Exitify
     GHC.Core.Opt.FloatIn
     GHC.Core.Opt.FloatOut
     GHC.Core.Opt.LiberateCase
     GHC.Core.Opt.Monad
     GHC.Core.Opt.OccurAnal
+    GHC.Core.Opt.Pipeline
     GHC.Core.Opt.SetLevels
     GHC.Core.Opt.Simplify
     GHC.Core.Opt.Simplify.Env
@@ -349,8 +349,6 @@ library
     GHC.Data.Stream
     GHC.Data.StringBuffer
     GHC.Data.TrieMap
-    GHC.Driver.Backpack
-    GHC.Driver.Backpack.Syntax
     GHC.Driver.CmdLine
     GHC.Driver.CodeOutput
     GHC.Driver.Finder
@@ -359,7 +357,6 @@ library
     GHC.Driver.Make
     GHC.Driver.MakeFile
     GHC.Driver.Monad
-    GHC.Driver.Packages
     GHC.Driver.Phases
     GHC.Driver.Pipeline
     GHC.Driver.Pipeline.Monad
@@ -410,6 +407,7 @@ library
     GHC.Iface.Ext.Types
     GHC.Iface.Ext.Utils
     GHC.Iface.Load
+    GHC.Iface.Make
     GHC.Iface.Recomp.Binary
     GHC.Iface.Recomp.Flags
     GHC.Iface.Rename
@@ -417,8 +415,6 @@ library
     GHC.Iface.Tidy
     GHC.Iface.Tidy.StaticPtrTable
     GHC.Iface.Type
-    GHC.Iface.UpdateCafInfos
-    GHC.Iface.Utils
     GHC.IfaceToCore
     GHC.Llvm
     GHC.Llvm.MetaData
@@ -550,7 +546,6 @@ library
     GHC.Tc.Types.EvTerm
     GHC.Tc.Types.Evidence
     GHC.Tc.Types.Origin
-    GHC.Tc.Utils.Backpack
     GHC.Tc.Utils.Env
     GHC.Tc.Utils.Instantiate
     GHC.Tc.Utils.Monad
@@ -560,7 +555,7 @@ library
     GHC.Tc.Utils.Zonk
     GHC.Tc.Validity
     GHC.ThToHs
-    GHC.Types.Annotation
+    GHC.Types.Annotations
     GHC.Types.Avail
     GHC.Types.Basic
     GHC.Types.CostCentre
@@ -573,7 +568,6 @@ library
     GHC.Types.Id.Info
     GHC.Types.Id.Make
     GHC.Types.Literal
-    GHC.Types.Module
     GHC.Types.Name
     GHC.Types.Name.Cache
     GHC.Types.Name.Env
@@ -593,6 +587,9 @@ library
     GHC.Types.Var
     GHC.Types.Var.Env
     GHC.Types.Var.Set
+    GHC.Unit.Info
+    GHC.Unit.Module
+    GHC.Unit.State
     GHC.Utils.Asm
     GHC.Utils.Binary
     GHC.Utils.BufHandle
@@ -600,19 +597,25 @@ library
     GHC.Utils.Encoding
     GHC.Utils.Error
     GHC.Utils.Exception
-    GHC.Utils.FingerPrint
+    GHC.Utils.Fingerprint
     GHC.Utils.FV
     GHC.Utils.IO.Unsafe
     GHC.Utils.Json
     GHC.Utils.Lexeme
     GHC.Utils.Misc
+    GHC.Utils.Monad
     GHC.Utils.Monad.State
-    GHC.Utils.Monad.Utils
     GHC.Utils.Outputable
     GHC.Utils.Panic
     GHC.Utils.Panic.Plain
     GHC.Utils.Ppr
     GHC.Utils.Ppr.Colour
+  -- Backpack was added in GHC 8.2
+  if impl(ghc >= 8.2)
+    exposed-modules:
+      GHC.Driver.Backpack
+      GHC.Driver.Backpack.Syntax
+      GHC.Tc.Utils.Backpack
   -- SPARC support was removed in GHC 9.4
   -- (https://gitlab.haskell.org/ghc/ghc/-/merge_requests/7431)
   if impl(ghc < 9.4)

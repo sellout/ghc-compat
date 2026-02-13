@@ -4,8 +4,10 @@ module GHC.Hs.Dump
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Hs.Dump as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 2, 0)
 import "ghc" HsDumpAst as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

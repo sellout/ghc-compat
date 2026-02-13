@@ -6,6 +6,8 @@ where
 
 #if MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Tc.Errors.Hole.FitTypes as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 10, 0)
 import "ghc" TcHoleFitTypes as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

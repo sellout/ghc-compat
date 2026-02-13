@@ -4,10 +4,12 @@ module GHC.Runtime.Linker.Types
   )
 where
 
-#if MIN_VERSION_ghc(9, 4, 0)
+#if MIN_VERSION_ghc(9, 2, 0)
 import "this" Unresolved as Upstream
 #elif MIN_VERSION_ghc(9, 0, 0)
 import "ghc" GHC.Runtime.Linker.Types as Upstream
-#else
+#elif MIN_VERSION_ghc(8, 10, 0)
 import "ghc" LinkerTypes as Upstream
+#else
+import "this" Unresolved as Upstream
 #endif

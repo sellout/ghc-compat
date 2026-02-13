@@ -4,7 +4,7 @@ module GHC.StgToCmm.Env
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.StgToCmm.Env as Upstream
 #else
 import "ghc" StgCmmEnv as Upstream

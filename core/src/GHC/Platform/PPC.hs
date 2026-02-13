@@ -4,7 +4,7 @@ module GHC.Platform.PPC
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Platform.PPC as Upstream
 #else
 import "ghc" CodeGen.Platform.PPC as Upstream

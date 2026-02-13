@@ -4,10 +4,11 @@ module GHC.HsToCore.PmCheck.Ppr
   )
 where
 
-#if MIN_VERSION_ghc(9, 4, 0)
+#if MIN_VERSION_ghc(9, 2, 0)
 import "this" Unresolved as Upstream
-#elif MIN_VERSION_ghc(9, 0, 0)
+#elif MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.HsToCore.PmCheck.Ppr as Upstream
 #else
-import "ghc" PmPpr as Upstream
+import "this" Unresolved as Upstream
 #endif
+-- import "ghc" PmPpr as Upstream

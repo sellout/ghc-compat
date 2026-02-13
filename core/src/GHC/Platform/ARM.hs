@@ -4,7 +4,7 @@ module GHC.Platform.ARM
   )
 where
 
-#if MIN_VERSION_ghc(9, 0, 0)
+#if MIN_VERSION_ghc(8, 10, 0)
 import "ghc" GHC.Platform.ARM as Upstream
 #else
 import "ghc" CodeGen.Platform.ARM as Upstream

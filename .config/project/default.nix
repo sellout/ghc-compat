@@ -24,6 +24,12 @@
 
   imports = [./hlint.nix];
 
+  ## FIXME: Like with nix-ci, `services.garnix.enable` should accept both `null`
+  ##        (don’t generate a file) and `false` (generate a file that does
+  ##        nothing).
+  services.garnix.builds."*".include = lib.mkForce [];
+  services.nix-ci.enable = lib.mkForce false;
+
   ## CI
   ## FIXME: Shouldn’t need `mkForce` here (or to duplicate the base contexts).
   ##        Need to improve module merging.

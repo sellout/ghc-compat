@@ -126,6 +126,10 @@ library
   else
     ghc-options:
       -Wall
+  if impl(ghc >= 8.4.1) && impl(ghc < 9.4.1)
+    ghc-options:
+      -- This breaks `MIN_VERSION_GLASGOW_HASKELL` on some GHCs.`
+      -Wno-cpp-undef
   if impl(ghc >= 8.6.1)
     ghc-options:
       -- remove if oldest supported version is GHC 8.6.1
@@ -137,6 +141,8 @@ library
   if impl(ghc >= 8.10.1)
     ghc-options:
       -Wno-missing-safe-haskell-mode
+      -- remove if oldest supported version is GHC 8.10.1
+      -Wno-prepositive-qualified-module
   default-extensions:
     -- BlockArguments - uncomment if the oldest supported version is GHC 8.6.1+
     CPP
@@ -164,6 +170,9 @@ library
     src
   build-depends:
     ghc >=7.10.3 && <9.16
+  if impl(ghc < 8.10)
+    build-depends:
+      base
   exposed-modules:
     GHC
     GHC.Builtin.Names
@@ -351,7 +360,11 @@ library
     GHC.Data.TrieMap
     GHC.Driver.CmdLine
     GHC.Driver.CodeOutput
+    GHC.Driver.DynFlags
+    GHC.Driver.Env
+    GHC.Driver.Env.Types
     GHC.Driver.Finder
+    GHC.Driver.Flags
     GHC.Driver.Hooks
     GHC.Driver.Main
     GHC.Driver.Make
@@ -362,7 +375,6 @@ library
     GHC.Driver.Pipeline.Monad
     GHC.Driver.Plugins
     GHC.Driver.Session
-    GHC.Driver.Types
     GHC.Hs
     GHC.Hs.Binds
     GHC.Hs.Decls
@@ -438,6 +450,8 @@ library
     GHC.Platform.X86
     GHC.Platform.X86_64
     GHC.Plugins
+    GHC.Prelude
+    GHC.Prelude.Basic
     GHC.Rename.Bind
     GHC.Rename.Doc
     GHC.Rename.Env
@@ -589,6 +603,8 @@ library
     GHC.Types.Var.Set
     GHC.Unit.Info
     GHC.Unit.Module
+    GHC.Unit.Module.ModIface
+    GHC.Unit.Module.ModSummary
     GHC.Unit.State
     GHC.Utils.Asm
     GHC.Utils.Binary
@@ -610,6 +626,14 @@ library
     GHC.Utils.Panic.Plain
     GHC.Utils.Ppr
     GHC.Utils.Ppr.Colour
+    Language.Haskell.Syntax
+    Language.Haskell.Syntax.Binds
+    Language.Haskell.Syntax.Decls
+    Language.Haskell.Syntax.Expr
+    Language.Haskell.Syntax.Extension
+    Language.Haskell.Syntax.Lit
+    Language.Haskell.Syntax.Pat
+    Language.Haskell.Syntax.Type
   -- Backpack was added in GHC 8.2
   if impl(ghc >= 8.2)
     exposed-modules:
@@ -640,4 +664,9 @@ library
       GHC.CmmToAsm.SPARC.Stack
       GHC.Platform.SPARC
   other-modules:
+    GHC.Driver.Flags.Compat
+    GHC.Driver.Flags.Upstream
+    GHC.Driver.Plugins.Compat
+    GHC.Driver.Plugins.Upstream
+    GHC.Plugins.Upstream
     Unresolved
